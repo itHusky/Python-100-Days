@@ -20,6 +20,12 @@ class Test:
         print(self.__foo)
         print('__bar:', self.newValeLength)
 
+    def __str__(self):
+        return 'Test: [foo=%s]' % (self.foo)
+
+    def __del__(self):
+        print("销毁Class")
+
 
 def main():
     test = Test('hello', "sssssssss2111111111111111111111")
