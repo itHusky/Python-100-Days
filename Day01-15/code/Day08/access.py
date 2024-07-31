@@ -1,17 +1,33 @@
 class Test:
 
-    def __init__(self, foo):
+    def __init__(self, foo, newValue): # 特殊函数
         self.__foo = foo
+        self.newValeLength = len(newValue)
 
-    def __bar(self):
+    def __bar__(self): # 私有方法
         print(self.__foo)
-        print('__bar')
+        print('__bar:', self.newValeLength)
+
+    def __bar(self): # 私有方法
+        print(self.__foo)
+        print('__bar:', self.newValeLength)
+
+    def _bar(self): # 受保护方法
+        print(self.__foo)
+        print('__bar:', self.newValeLength)
+
+    def bar(self):  # 公共函数 类的外部直接调用，用于执行类的公共行为
+        print(self.__foo)
+        print('__bar:', self.newValeLength)
 
 
 def main():
-    test = Test('hello')
-    test._Test__bar()
-    print(test._Test__foo)
+    test = Test('hello', "sssssssss2111111111111111111111")
+    # test._Test__bar()
+    # test.__bar() # 错误
+    test.bar()
+    test._bar()
+    print(test.newValeLength)
 
 
 if __name__ == "__main__":
